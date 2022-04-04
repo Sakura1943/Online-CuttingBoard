@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/styles/atom-one-light.min.css"
+            integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q=="crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
+            integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg=="crossorigin="anonymous"
+            media="(prefers-color-scheme: dark)">
+        <style>
+                @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #303030;
+                }
+                .hljs {
+                    background-color: #424242;
+                    ;
+                }
+                .hljs-ln-code {
+                    color: #abb2bf;
+                }
+                }
+                .hljs-ln-numbers {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-align: center;
+                color: #ccc;
+                border-right: 1px solid #CCC;
+                vertical-align: top;
+                padding-right: 10px !important;
+                }
+                .hljs-ln-code {
+                padding-left: 10px !important;
+                white-space: pre-wrap;
+                }
+        </style>
+        <title>{{fileName}}</title>
+    </head>
+    <body>
+        <pre>
+        <code>{{ content }}</code>
+    </pre>
+    </body>
+    <script
+        src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/highlight.min.js"
+        integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA=="crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.bootcdn.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+        integrity="sha512-axd5V66bnXpNVQzm1c7u1M614TVRXXtouyWCE+eMYl8ALK8ePJEs96Xtx7VVrPBc0UraCn63U1+ARFI3ofW+aA=="crossorigin="anonymous"></script>
+    <script>hljs.highlightAll();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
+</html>

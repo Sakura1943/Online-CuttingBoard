@@ -1,0 +1,13 @@
+[Unit]
+Description=Online Cutting Board service
+Wants=network.target
+After=network.target network.service
+
+[Service]
+Type=simple
+WorkingDirectory=/www/wwwroot/cut.sakura1943.top
+ExecStart=bash /www/wwwroot/cut.sakura1943.top/start.sh
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
