@@ -32,7 +32,7 @@ function createDataTable(connection) {
         if (err) {
             // 创建失败
             console.log('[CREATE TABLE ERROR] - ', err.message)
-            return
+            return false
         }
         // 创建成功
         console.log('--------------------------CREATE TABLES----------------------------');
@@ -44,7 +44,7 @@ function createDataTable(connection) {
         // 失败
         if (err) {
             console.log('[CREATE TABLE ERROR] - ', err.message)
-            return
+            return false
         }
     })
 }
@@ -61,7 +61,7 @@ function addUserFileInfo(data, mysqlInfo, connection) {
         if (err) {
             // 失败
             console.log('[INSERT ERROR] - ', err.message);
-            return;
+            return false
         }
         //成功
         console.log('--------------------------INSERT----------------------------');
@@ -80,7 +80,7 @@ function queryUserFileInfo(mysqlInfo, connection, queryData) {
         // 错误
         if (err) {
             console.log('[SELECT ERROR] - ', err.message)
-            return
+            return false
         }
         // 成功
         console.log('--------------------------SELECT----------------------------');
@@ -99,7 +99,7 @@ function dropUserfile(connection, fileName) {
         if (err) {
             console.log('[DELETE ERROR] - ', err.message);
             console.log('数据可能不存在');
-            return
+            return false
         }
         // 成功
         console.log('--------------------------DELETE----------------------------');

@@ -179,15 +179,17 @@ router.get('/api/drop', (req, res) => {
   var filePath = path.join(__dirname, `../upload/${req.query.file}`)
   fs.unlink(filePath, (err) => {
     if (err) {
-      res.send("删除失败" + err.message)
+      console.log("删除失败" + err.message)
+      return false
     }
-    res.send("删除成功")
+    console.log("删除成功")
   })
   var htmlPath = path.join(__dirname, `../pages/${req.query.file}`)
   clearDir(htmlPath)
   fs.rmdir(htmlPath, err => {
     if (err) {
-      res.send("删除失败" + err.message)
+      console.log("删除失败" + err.message)
+      return false
     }
     console.log("删除成功")
   })
