@@ -142,7 +142,7 @@ router.post('/api/upload', multer({
         })
         try {
           fs.writeFileSync(htmlFilePath, result)
-          console.log(`生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}`);
+          console.log(`生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}` + '\n');
         } catch (err) {
           console.error(err.message)
         }
@@ -150,7 +150,7 @@ router.post('/api/upload', multer({
     })
   }
   // 返回文件属性列表给用户
-  res.send(fileList + '\n' + `生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}`)
+  res.send(fileList + '\n' + `生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}` + '\n')
 })
 
 // 下载接口
