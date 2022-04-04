@@ -34,12 +34,68 @@ npm run dev
 `默认端口3000`
 
 ## 于Linux运行
-```
+```shell
 cp -arvf systemd/cuttingboard.service /usr/lib/system/system
 systemctl daemon-reload
 systemctl enable --now cuttingboard
 ```
 
+## Linux 、Unix 上传文件
+```shell
+curl -F "file=@文件路径" http://127.0.0.1:3000/api/upload
+管道传输文本:
+cat /etc/passwd | curl curl -F "file=@-" http://127.0.0.1:3000/api/upload
+重定向:
+curl curl -F "file=@-" http://127.0.0.1:3000/api/upload < 文件路径
+```
+可将改功能以`bash`函数保存， 方便再`shell`调用(写入`${HOME}/.bashrc`)
+```shell
+uploadFile() {
+    curl -F "file=@文件路径" http://127.0.0.1:3000/api/upload
+}
+```
+使用方法
+```shell
+cat 文件路径 | uploadFile
+或者
+uploadFile < 文件路径
+```
+
+## Linux 、Unix 下载文件
+```shell
+curl -O 保存的文件名 http://127.0.0.1:3000/api/download?file=文件名(创建成功后提示的文件名)
+或者
+wget http://127.0.0.1:3000/api/download?file=文件名(创建成功后提示的文件名) -O 保存的文件名(可以有路径)
+```
+可参照上传的方法封装成 `bash` 函数 (写入`${HOME}/.bashrc`)
+```shell
+downFile() {
+    curl -O $2 http://127.0.0.1:3000/api/download?file=$1
+}
+或者
+downFile() {
+    wget http://127.0.0.1:3000/api/download?file=$1 -O $2
+}
+```
+使用
+```shell
+downFile 文件名 存储路径
+```
+
+## Linux 、Unix 删除生成页面以及数据库对应数据(切勿手动删除)
+```shell
+curl -X GET http://127.0.0.1:3000/api/drop?file=文件名(创建成功后提示的文件名)
+```
+可参照上面的方法封装成 `bash` 函数 (写入`${HOME}/.bashrc`)
+```shell
+dropFileData() {
+    curl -X GET http://127.0.0.1:3000/api/drop?file=$1
+}
+```
+使用
+```shell
+dropFileData 文件名(创建成功后提示的文件名)
+```
 
 
 ## 接口参数
