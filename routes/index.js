@@ -11,6 +11,7 @@ const mysql = require('mysql')
 const mysqlConnect = require('./mysql')
 const template = require('art-template')
 const fsExtra = require("fs-extra");
+const srcUrl = require('./shorturl')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -142,7 +143,7 @@ router.post('/api/upload', multer({
         })
         try {
           fs.writeFileSync(htmlFilePath, result)
-          console.log(`生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}` + '\n');
+          console.log(`生成html文件成功， 访问地址为: ${req.protocol}://${req.headers.host}/p/${F.filename}` + '\n');
         } catch (err) {
           console.error(err.message)
         }
@@ -150,7 +151,22 @@ router.post('/api/upload', multer({
     })
   }
   // 返回文件属性列表给用户
-  res.send(fileList + '\n' + `生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}` + '\n')
+  // res.send(fileList + '\n' + `生成html文件成功， 访问地址为: http://${req.headers.host}/p/${F.filename}` + '\n')
+  let theUrl = `${req.protocol}://${req.headers.host}/p/${F.filename}`
+  console.log("theurl: ", theUrl);
+  let sourceUrl = srcUrl.getShortUrl(theUrl)
+  try {
+  sourceUrl.then(result => {
+    res.json({
+      msg: 'success',
+      url: `https://sakunia.tk${result}`
+    })
+  })} catch (err){
+    res.json ({
+      msg: 'false',
+    })
+  }
+
 })
 
 // 下载接口
