@@ -156,15 +156,18 @@ router.post('/api/upload', multer({
   console.log("theurl: ", theUrl);
   let sourceUrl = srcUrl.getShortUrl(theUrl)
   try {
-  sourceUrl.then(result => {
-    res.json({
-      msg: 'success',
-      url: `https://sakunia.tk${result}`
+    sourceUrl.then(result => {
+      res.json({
+        msg: 'success',
+        url: `https://sakunia.tk${result}`
+      })
     })
-  })} catch (err){
-    res.json ({
+    return
+  } catch (err) {
+    res.json({
       msg: 'false',
     })
+    return
   }
 
 })
