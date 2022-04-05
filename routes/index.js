@@ -160,13 +160,13 @@ router.post('/api/upload', multer({
       res.json({
         msg: 'success',
         url: `https://sakunia.tk${result}`
-      }, "\n")
+      })
     })
     return
   } catch (err) {
     res.json({
       msg: 'false',
-    }, "\n")
+    })
     return
   }
 
